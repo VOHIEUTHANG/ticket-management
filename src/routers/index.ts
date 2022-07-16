@@ -1,8 +1,11 @@
 import TicketCheck from '../view/pages/TicketCheck';
 import TicketManagement from '../view/pages/TicketManagement';
 
+import { TPath } from '@interface/index';
+import { routes } from './routes';
+
 export interface IRoute {
-  path: string;
+  path: TPath;
   activeTab?: number;
   element: () => JSX.Element;
   layout?: (props: any) => JSX.Element;
@@ -10,14 +13,19 @@ export interface IRoute {
 
 const publicRoute: IRoute[] = [
   {
-    path: '/ticket-check',
-    element: TicketCheck,
-    activeTab: 2,
+    path: routes[0],
+    element: TicketManagement,
+    activeTab: 0,
   },
   {
-    path: '/ticket-management',
+    path: routes[1],
     element: TicketManagement,
     activeTab: 1,
+  },
+  {
+    path: routes[2],
+    element: TicketCheck,
+    activeTab: 2,
   },
 ];
 
