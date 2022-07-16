@@ -10,7 +10,7 @@ module.exports = {
       '@interface': path.resolve(__dirname, 'src/types'),
       '@components': path.resolve(__dirname, 'src/shared/components'),
       '@data': path.resolve(__dirname, 'src/data'),
-      '@pages': path.resolve(__dirname, 'src/view/pages'),
+      '@view': path.resolve(__dirname, 'src/view'),
     },
   },
 };

@@ -5,6 +5,9 @@ type HEX = `#${string}`;
 
 type TColor = RGB | RGBA | HEX;
 
+type path = 'management' | 'check' | 'settings';
+type TPath = `/ticket-${path}` | '/' | '/sign-in' | '*' | '/sign-up';
+
 interface TTicket {
   key: string;
   numericalOrder: number;
@@ -29,4 +32,4 @@ interface TTicketCheck {
   ticketCheckStatus: TticketCheckStatus;
 }
 
-export type { TColor, TTicket, TusageStatus, TticketCheckStatus, TTicketCheck };
+export type { TColor, TTicket, TusageStatus, TticketCheckStatus, TTicketCheck, TPath };

@@ -1,0 +1,64 @@
+@import '../../styles/mixin';
+@import '../../styles/variable';
+
+.auth-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  background-color: rgb(250, 250, 250);
+}
+
+.auth-inner {
+  width: 600px;
+  margin: auto;
+  background: white;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.1);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all 0.3s;
+}
+
+.auth-wrapper .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+
+.auth-wrapper h2 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 3rem;
+  color: $color-text-yellow;
+  margin-bottom: 20px;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
+.ant-form-item-label {
+  text-align: start;
+}
+.ant-form-item-control {
+  padding-bottom: 10px;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: $color-text-yellow;
+}
+.ant-form-item-control-input-content > input:focus,
+.ant-form-item-control-input-content > span:focus {
+  border-color: $color-text-yellow;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.05);
+  border-right-width: 1px;
+  outline: 0;
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: $color-text-yellow;
+  box-shadow: none;
+}
+
+.ant-form-item-control-input-content > input:hover,
+.ant-form-item-control-input-content > span:hover {
+  border-color: $color-text-yellow;
+}
