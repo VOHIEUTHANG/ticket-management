@@ -19,21 +19,24 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-connectAuthEmulator(auth, 'http://localhost:9099');
+// connectAuthEmulator(auth, 'http://localhost:9099');
 
 const signIn = async (
   email: string,
   password: string,
-  successHandler: (user: any) => {},
-  errorHandler: (...prams: any[]) => {},
+  successHandler: (user: any) => void,
+  errorHandler?: (...prams: any[]) => void,
 ) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     successHandler(userCredential);
-    console.log('🚀 ~ file: firebase.ts ~ line 26 ~ signIn ~ userCredential', userCredential);
   } catch (error) {
-    errorHandler(error);
+    errorHandler && errorHandler(error);
   }
 };
 
-export { signIn, signInWithEmailAndPassword as login, onAuthStateChanged };
+const onAuthStateChange = (handler: (user: any) => void) => {
+  onAuthStateChanged(auth, handler);
+};
+
+export { signIn, signInWithEmailAndPassword as login, onAuthStateChange };
