@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "baseUrl": "./",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +15,24 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@layout/*": ["src/layout/*"],
+      "@routers/*": ["src/routers/*"],
+      "@styles/*": ["src/view/styles/*"],
+      "@view/*": ["src/view/*"],
+      "@assets/*": ["src/shared/assets/*"],
+      "@helper/*": ["src/shared/helper/*"],
+      "@hoc/*": ["src/shared/hoc/*"],
+      "@shared/*": ["src/shared/*"],
+      "@hook/*": ["src/shared/hook/*"],
+      "@components/*": ["src/shared/components/*"],
+      "@interface/*": ["src/types/*"],
+      "@data/*": ["src/data/*"],
+      "@pages/*": ["src/view/pages*"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"],
+  "typeRoots": ["./src/@types", "node_modules/@types"],
+  "lib": ["es2018", "dom", "es6"]
 }

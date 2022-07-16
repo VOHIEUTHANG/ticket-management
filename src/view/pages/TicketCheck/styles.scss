@@ -1,0 +1,61 @@
+@import '../../styles/variable';
+@import '../../styles/mixin';
+
+.ticket-filter {
+  &__title {
+    color: $color-text-dark;
+    margin-bottom: 32px;
+  }
+
+  .checkedTicket {
+    font-style: italic;
+    color: $color-light-red;
+  }
+  .uncheckedTicket {
+    color: $color-light-gray;
+    font-style: italic;
+  }
+
+  form.filter-form {
+    .ant-form-item-label {
+      text-align: left;
+    }
+    .ant-form-item-control {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    label {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 26px;
+    }
+    .ant-radio-checked .ant-radio-inner::after {
+      transform: scale(1);
+    }
+    .form-submit {
+      justify-content: center;
+    }
+  }
+  .ant-btn.solid {
+    background-color: $color-text-yellow;
+    color: $color-white;
+    &:hover {
+      background-color: $color-white;
+      color: $color-text-yellow;
+    }
+  }
+}
+
+.left-col {
+  flex-basis: calc(1097px + 24px);
+  max-width: 100%;
+}
+.right-col {
+  flex: 1;
+}
+
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+}
