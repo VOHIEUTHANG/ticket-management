@@ -6,7 +6,7 @@ type HEX = `#${string}`;
 type TColor = RGB | RGBA | HEX;
 
 type path = 'management' | 'check' | 'settings';
-type TPath = `/ticket-${path}` | '/';
+type TPath = `/ticket-${path}` | '/' | '/sign-in' | '*' | '/sign-up';
 
 interface TTicket {
   key: string;
