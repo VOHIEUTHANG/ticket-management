@@ -5,6 +5,7 @@ import { Button, Table, Form, Radio, Space, DatePicker } from 'antd';
 import type { RadioChangeEvent } from 'antd';
 import { TTicketCheck, TticketCheckStatus } from '@interface/index';
 import { ticketCheckData } from '@data/dummyData';
+import ContentContainer from '@components/ContentContainer';
 import moment from 'moment';
 import './styles.scss';
 
@@ -67,8 +68,7 @@ const TicketChange = () => {
   return (
     <div className="row h-100">
       <div className="col-8 col left-col">
-        <div className="content ">
-          <div className="content__title text-style-title">Đối soát vé</div>
+        <ContentContainer title="Đối soát vé" mainClass="ticketCheckingPage">
           <div className="content__features">
             <SearchBar placeholder="Tìm bằng số vé" width="446px" />
             <div>
@@ -89,7 +89,7 @@ const TicketChange = () => {
               />
             </div>
           </div>
-        </div>
+        </ContentContainer>
       </div>
       <div className="col-4 col right-col">
         <div className="content">

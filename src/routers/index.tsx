@@ -2,6 +2,8 @@ import TicketCheck from '@view/pages/TicketCheck';
 import TicketManagement from '@view/pages/TicketManagement';
 import SignIn from '@view/pages/SignIn';
 import NotFound from '@view/pages/NotFound';
+import Home from '@view/pages/Home';
+import Settings from '@view/pages/Settings';
 
 import NoneLayout from '@layout/NoneLayout';
 
@@ -31,7 +33,7 @@ const publicRoute: IRoute[] = [
 const privateRoute: IRoute[] = [
   {
     path: routes.home,
-    element: () => <div className="content">Home page</div>,
+    element: Home,
     activeTab: 0,
   },
   {
@@ -46,7 +48,7 @@ const privateRoute: IRoute[] = [
   },
   {
     path: routes.settings,
-    element: () => <div className="content">Settings</div>,
+    element: Settings,
     activeTab: 3,
   },
 ];

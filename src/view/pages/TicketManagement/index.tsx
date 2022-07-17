@@ -4,6 +4,7 @@ import { Button, Table } from 'antd';
 import type { ColumnsType } from 'antd/lib/table';
 import type { TTicket, TusageStatus, TColor } from '@interface/index';
 import { ticketData } from '@data/dummyData';
+import ContentContainer from '@components/ContentContainer';
 
 import './styles.scss';
 
@@ -60,8 +61,7 @@ const columns: ColumnsType<TTicket> = [
 
 const TicketManagement = () => {
   return (
-    <div className="content">
-      <div className="content__title text-style-title">Danh sách vé</div>
+    <ContentContainer title="Danh sách vé" mainClass="ticketManagementPage">
       <div className="content__features">
         <SearchBar placeholder="Tìm bằng số vé" width="446px" />
         <div>
@@ -103,7 +103,7 @@ const TicketManagement = () => {
           />
         </div>
       </div>
-    </div>
+    </ContentContainer>
   );
 };
 

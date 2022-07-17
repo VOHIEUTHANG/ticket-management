@@ -1,0 +1,8 @@
+@import '../../styles/variable';
+@import '../../styles/mixin';
+
+.homepage {
+  .content__subtitle {
+    color: $color-text-dark;
+  }
+}

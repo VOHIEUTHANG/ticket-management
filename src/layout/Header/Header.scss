@@ -1,3 +1,6 @@
+@import '../../view/styles/mixin';
+@import '../../view/styles/variable';
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -21,5 +24,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+}
+
+.dropdow-wrapper {
+  background-color: $color-white;
+  border-radius: 4px;
+  padding: 10px 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  .dropdow-item {
+    padding: 8px 24px;
+    @include centerFlexItem;
+    transition: all 0.3s ease;
+    &.logout {
+      &:hover {
+        background-color: $color-error;
+        color: white;
+      }
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
 }

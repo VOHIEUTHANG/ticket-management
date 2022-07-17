@@ -1,19 +1,19 @@
 @import '../../styles/variable';
 @import '../../styles/mixin';
 
+.checkedTicket {
+  font-style: italic;
+  color: $color-light-red;
+}
+.uncheckedTicket {
+  color: $color-light-gray;
+  font-style: italic;
+}
+
 .ticket-filter {
   &__title {
     color: $color-text-dark;
     margin-bottom: 32px;
-  }
-
-  .checkedTicket {
-    font-style: italic;
-    color: $color-light-red;
-  }
-  .uncheckedTicket {
-    color: $color-light-gray;
-    font-style: italic;
   }
 
   form.filter-form {
