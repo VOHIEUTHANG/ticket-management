@@ -1,9 +1,49 @@
 import React from 'react';
 import './Header.scss';
-import { Avatar } from 'antd';
+import { Avatar, Dropdown, Menu, message, Space } from 'antd';
+import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
 import SearchBar from '@components/SearchBar';
+import { logOut } from '@data/firebase';
+import { useSelector } from 'react-redux';
+import { profileSelector } from 'src/app/selector';
+import 'tippy.js/dist/tippy.css';
+import { useNavigate } from 'react-router-dom';
+
+const onClick: MenuProps['onClick'] = ({ key }) => {
+  if (key === '2') {
+    logOut()
+      .then(() => {
+        message.info(`Logout successfully !`);
+        window.location.reload();
+      })
+      .catch(() => {
+        message.info(`Logout Failed! !`);
+      });
+  }
+};
+
+const menu = (
+  <Menu
+    onClick={onClick}
+    items={[
+      {
+        label: 'Thông tin',
+        key: '1',
+        icon: <UserOutlined />,
+      },
+      {
+        label: 'Đăng xuất',
+        key: '2',
+        icon: <LogoutOutlined />,
+      },
+    ]}
+  />
+);
 
 const Header = () => {
+  const currentProfile = useSelector(profileSelector);
+
   return (
     <header className="header">
       <div className="header__search">
@@ -69,15 +109,9 @@ const Header = () => {
           </div>
         </div>
         <div className="account-item">
-          <Avatar
-            size={48}
-            icon={
-              <img
-                src="https://images.wallpaperscraft.com/image/single/laptop_keyboard_glow_170138_1280x720.jpg"
-                alt=""
-              />
-            }
-          />
+          <Dropdown overlay={menu}>
+            <Avatar size={48} icon={<img src={currentProfile.user?.photoURL || ''} alt="" />} />
+          </Dropdown>
         </div>
       </div>
     </header>

@@ -11,6 +11,7 @@ module.exports = {
       '@components': path.resolve(__dirname, 'src/shared/components'),
       '@data': path.resolve(__dirname, 'src/data'),
       '@view': path.resolve(__dirname, 'src/view'),
+      '@app': path.resolve(__dirname, 'src/app'),
     },
   },
 };

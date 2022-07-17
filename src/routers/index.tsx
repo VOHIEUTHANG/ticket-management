@@ -17,6 +17,19 @@ export interface IRoute {
 
 const publicRoute: IRoute[] = [
   {
+    path: routes.signIn,
+    element: SignIn,
+    layout: NoneLayout,
+  },
+  {
+    path: routes.notFound,
+    element: NotFound,
+    layout: NoneLayout,
+  },
+];
+
+const privateRoute: IRoute[] = [
+  {
     path: routes.home,
     element: () => <div className="content">Home page</div>,
     activeTab: 0,
@@ -36,18 +49,6 @@ const publicRoute: IRoute[] = [
     element: () => <div className="content">Settings</div>,
     activeTab: 3,
   },
-  {
-    path: routes.signIn,
-    element: SignIn,
-    layout: NoneLayout,
-  },
-  {
-    path: routes.notFound,
-    element: NotFound,
-    layout: NoneLayout,
-  },
 ];
-
-const privateRoute: any[] = [];
 
 export { publicRoute, privateRoute };

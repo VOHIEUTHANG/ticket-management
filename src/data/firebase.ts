@@ -4,7 +4,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  connectAuthEmulator,
+  updateProfile,
+  signOut,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -18,8 +19,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-// connectAuthEmulator(auth, 'http://localhost:9099');
 
 const signIn = async (
   email: string,
@@ -35,8 +34,27 @@ const signIn = async (
   }
 };
 
+const logOut = () => {
+  return signOut(auth);
+};
+
+const updateProflie = (name: string, photoURL: string) => {
+  if (auth.currentUser) {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    })
+      .then(() => {
+        console.log('Profile updated !');
+      })
+      .catch(error => {
+        console.error('An error occurred !');
+      });
+  }
+};
+
 const onAuthStateChange = (handler: (user: any) => void) => {
   onAuthStateChanged(auth, handler);
 };
 
-export { signIn, signInWithEmailAndPassword as login, onAuthStateChange };
+export { signIn, signInWithEmailAndPassword as login, onAuthStateChange, logOut, updateProflie };

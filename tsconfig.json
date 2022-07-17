@@ -29,7 +29,8 @@
       "@components/*": ["src/shared/components/*"],
       "@interface/*": ["src/types/*"],
       "@data/*": ["src/data/*"],
-      "@pages/*": ["src/view/pages*"]
+      "@pages/*": ["src/view/pages*"],
+      "@app/*": ["src/app*"]
     }
   },
   "include": ["src"],

@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import './styles.scss';
-import { signIn, onAuthStateChange } from '@data/firebase';
+import { signIn, onAuthStateChange, logOut, updateProflie } from '@data/firebase';
+import { useSelector, useDispatch } from 'react-redux';
+import { profileSelector } from 'src/app/selector';
+import { addProfile, IprofileState } from 'src/app/profileSlice';
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    onAuthStateChange(async (user: any) => {
+      console.log('On Auth State Change ...');
+      if (user) {
+        try {
+          const idToken = await user.getIdToken();
+          const userProfile: IprofileState = {
+            statusLogin: true,
+            user: {
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName || '',
+              photoURL: user.photoURL || '',
+            },
+            token: idToken,
+            remember: true,
+          };
+          dispatch(addProfile(userProfile));
+        } catch (error) {}
+      } else {
+        console.log('User is signed out !');
+      }
+    });
+  }, []);
+  const currentProfile = useSelector(profileSelector);
+  if (currentProfile.statusLogin === true) {
+    navigate('/');
+  }
   const onFinish = (values: { email: string; password: string; remember: boolean }) => {
     const handleSuccess = (userCredential: any) => {
       console.log(userCredential);
@@ -14,16 +48,6 @@ const SignIn = () => {
   };
 
   const onFinishFailed = (errorInfo: any) => {};
-
-  onAuthStateChange(async (user: any) => {
-    console.log('On Auth State Change ...');
-    if (user) {
-      const tokenResult = await user.getIdTokenResult();
-      console.log('🚀 ~ file: index.tsx ~ line 22 ~ onAuthStateChange ~ token', tokenResult?.token);
-    } else {
-      console.log('User is signed out !');
-    }
-  });
 
   return (
     <div className="auth-wrapper">
