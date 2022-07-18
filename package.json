@@ -4,6 +4,7 @@
   "private": true,
   "main": "./view/index.tsx",
   "dependencies": {
+    "@ant-design/charts": "^1.4.1",
     "@craco/craco": "^7.0.0-alpha.1",
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
