@@ -6,7 +6,7 @@ import { Pie } from '@ant-design/plots';
 import ContentContainer from '@components/ContentContainer';
 import './styles.scss';
 
-const dateFormat = 'MM/DD/YYYY';
+const dateFormat = 'MM/YYYY';
 
 const DemoTinyArea = () => {
   const data = [
@@ -23,29 +23,51 @@ const DemoTinyArea = () => {
   return <TinyArea {...config} />;
 };
 
-const DemoPie = () => {
-  const data = [
-    {
-      type: 'Đã sử dụng',
-      value: 56024,
-    },
-    {
-      type: 'Chưa sử dụng',
-      value: 13568,
-    },
-  ];
+const data1 = [
+  {
+    type: 'Chưa sử dụng',
+    value: 13568,
+  },
+  {
+    type: 'Đã sử dụng',
+    value: 56024,
+  },
+];
+const data2 = [
+  {
+    type: 'Chưa sử dụng',
+    value: 28302,
+  },
+  {
+    type: 'Đã sử dụng',
+    value: 30256,
+  },
+];
+
+const PieChart = ({
+  data,
+  legend,
+}: {
+  data: { type: string; value: number }[];
+  legend?: false;
+}) => {
   const config = {
-    appendPadding: 10,
+    appendPadding: 0,
+    width: 246,
+    height: 246,
     data,
     angleField: 'value',
     colorField: 'type',
+    color: ['#FF8A48', '#4F75FF'],
     radius: 1,
-    innerRadius: 0.6,
+    legend: legend,
+    innerRadius: 0.5,
     label: {
       type: 'inner',
       offset: '-50%',
       content: '{value}',
       style: {
+        fill: 'white',
         textAlign: 'center',
         fontSize: 14,
       },
@@ -66,7 +88,7 @@ const DemoPie = () => {
           overflow: 'hidden',
           textOverflow: 'ellipsis',
         },
-        content: 'AntV\nG2Plot',
+        content: '',
       },
     },
   };
@@ -78,25 +100,46 @@ const Home = () => {
     <ContentContainer mainClass="homePage" title="Thống kê">
       <div className="content__features">
         <div className="text-style-subtitle content__subtitle">Doanh thu</div>
-        <DatePicker defaultValue={moment('01/05/2021', dateFormat)} format={dateFormat} />
+        <DatePicker defaultValue={moment('04/2021', dateFormat)} format={dateFormat} />
       </div>
       <div className="content__chart-line">
         <DemoTinyArea />
       </div>
       <div className="content__chart-pie">
-        <div className="sub-title">
-          <span>Tổng doanh thu</span>
+        <div className="chart-pie-title">
+          <span className="chart-pie__revenue text-style-light-thi">Tổng doanh thu theo tuẩn</span>
           <br />
-          <span>
-            525.145.000<sub>đồng</sub>
+          <span className="text-style-2">
+            525.145.000<sub className="text-style-light-thin">đồng</sub>
           </span>
         </div>
-        <div className="d-flex">
+        <div className="d-flex chart-pie-container">
           <div>
-            <DemoPie />
+            <DatePicker defaultValue={moment('04/2021', dateFormat)} format={dateFormat} />
+          </div>
+          <div className="chart-pie-item">
+            <p className="text-style-subtitle" style={{ marginBottom: 25 }}>
+              Gói gia đình
+            </p>
+            <PieChart data={data1} legend={false} />
+          </div>
+          <div className="chart-pie-item">
+            <p className="text-style-subtitle" style={{ marginBottom: 25 }}>
+              Gói sự kiện
+            </p>
+            <PieChart data={data2} legend={false} />
           </div>
           <div>
-            <DemoPie />
+            <div>
+              <div className="chart__type d-flex">
+                <div className="chart__color used"></div>
+                <div className="chart__text">Vé đã sử dụng</div>
+              </div>
+              <div className="chart__type d-flex">
+                <div className="chart__color unused"></div>
+                <div className="chart__text">Vé chưa sử dụng</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
