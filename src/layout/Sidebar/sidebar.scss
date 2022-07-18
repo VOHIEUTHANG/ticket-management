@@ -27,11 +27,27 @@
       cursor: pointer;
       @include centerFlexItem;
       justify-content: flex-start;
+      &-sub {
+        display: block;
+        padding: 0;
+        &:hover {
+          background-color: unset !important;
+          color: unset !important;
+        }
+        & > span {
+          display: block;
+          margin-top: 8px;
+          margin-left: 80px !important;
+        }
+      }
       &.active {
         background-color: $color-yellow;
         color: $color-white;
         & path {
           fill: $color-white;
+        }
+        & > span {
+          font-weight: 700;
         }
       }
 
@@ -53,6 +69,7 @@
       }
       span {
         margin-left: 14px;
+        font-weight: 500;
       }
     }
   }

@@ -1,4 +1,5 @@
 type TusageStatus = 'Đã sử dụng' | 'Chưa sử dụng' | 'Hết hạn';
+
 type RGB = `rgb(${number}, ${number}, ${number})`;
 type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`;
 type HEX = `#${string}`;
@@ -32,4 +33,29 @@ interface TTicketCheck {
   ticketCheckStatus: TticketCheckStatus;
 }
 
-export type { TColor, TTicket, TusageStatus, TticketCheckStatus, TTicketCheck, TPath };
+type TDateTime = { date: string; time: string };
+type TapplyStatus = 'Đang áp dụng' | 'Tắt';
+
+interface TTicketPackage {
+  key: string;
+  numericalOrder: number;
+  packageID: string;
+  packageName: string;
+  dateOfUse: TDateTime;
+  expirationDate: TDateTime;
+  price: number;
+  comboPrice?: number;
+  status: TapplyStatus;
+}
+
+export type {
+  TColor,
+  TTicket,
+  TTicketPackage,
+  TusageStatus,
+  TticketCheckStatus,
+  TTicketCheck,
+  TPath,
+  TDateTime,
+  TapplyStatus,
+};

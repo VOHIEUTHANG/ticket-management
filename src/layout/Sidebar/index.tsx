@@ -71,6 +71,9 @@ const Sidebar = ({ activeTab }: { activeTab: number }) => {
               </Link>
             );
           })}
+          <div className="nav-item nav-item-sub">
+            <span className="text-style-1">Gói dịch vụ</span>
+          </div>
         </ul>
       </nav>
       <div className="copyright">

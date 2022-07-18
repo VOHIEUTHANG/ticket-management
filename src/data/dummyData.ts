@@ -1,4 +1,4 @@
-import { TTicket, TTicketCheck } from '@interface/index';
+import { TTicket, TTicketCheck, TTicketPackage } from '@interface/index';
 
 export const ticketData: TTicket[] = [
   {
@@ -148,5 +148,40 @@ export const ticketCheckData: TTicketCheck[] = [
     nameOfTypeTicket: 'Vé cổng',
     checkInGate: 'Cổng 1',
     ticketCheckStatus: 'Đã đối soát',
+  },
+];
+export const ticketPackageData: TTicketPackage[] = [
+  {
+    key: '1',
+    numericalOrder: 1,
+    packageID: 'ALT20210501',
+    packageName: 'Gói gia đình',
+    dateOfUse: {
+      date: '14/04/2021',
+      time: '08:00:00',
+    },
+    expirationDate: {
+      date: '14/04/2021',
+      time: '23:00:00',
+    },
+    price: 90000,
+    comboPrice: 360000,
+    status: 'Đang áp dụng',
+  },
+  {
+    key: '2',
+    numericalOrder: 2,
+    packageID: 'ALT20210501',
+    packageName: 'Gói sự kiện',
+    dateOfUse: {
+      date: '14/04/2021',
+      time: '08:00:00',
+    },
+    expirationDate: {
+      date: '14/04/2021',
+      time: '23:00:00',
+    },
+    price: 20000,
+    status: 'Tắt',
   },
 ];
