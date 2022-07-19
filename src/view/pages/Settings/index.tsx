@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchBar from '@components/SearchBar';
 import { Tag, ContentContainer } from '@components/index';
 import type { ColumnsType } from 'antd/lib/table';
-import { Button, Table } from 'antd';
+import {
+  Button,
+  Table,
+  Modal,
+  Form,
+  Input,
+  Space,
+  DatePicker,
+  TimePicker,
+  Checkbox,
+  Select,
+} from 'antd';
 import { TTicketPackage, TDateTime, TapplyStatus, TColor } from '@interface/index';
 import { ticketPackageData } from '@data/dummyData';
 import './styles.scss';
+
+const { Option } = Select;
+import FormItem from 'antd/lib/form/FormItem';
 
 const columns: ColumnsType<TTicketPackage> = [
   {
@@ -100,13 +114,34 @@ const columns: ColumnsType<TTicketPackage> = [
 ];
 
 const Settings = () => {
+  const [isModalAddPackageTicketShow, setIsModalAddPackageTicketShow] = useState(false);
+  const showModal = () => {
+    setIsModalAddPackageTicketShow(true);
+  };
+  const handleOk = () => {
+    setIsModalAddPackageTicketShow(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalAddPackageTicketShow(false);
+  };
+
+  // Form submit handler
+  const onFinish = (values: any) => {
+    console.log('Success:', values);
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+  };
+
   return (
     <ContentContainer title="Danh sách gói vé" mainClass="settingsPage">
       <div className="content__features">
         <SearchBar placeholder="Tìm bằng số vé" width="446px" />
         <div>
           <Button>Xuất file (.csv)</Button>
-          <Button className="solid" style={{ marginLeft: 24 }}>
+          <Button className="solid" onClick={showModal} style={{ marginLeft: 24 }}>
             Thêm gói vé
           </Button>
         </div>
@@ -120,6 +155,87 @@ const Settings = () => {
           />
         </div>
       </div>
+      <Modal
+        title="Thêm gói vé"
+        centered
+        width="auto"
+        visible={isModalAddPackageTicketShow}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        okText="Lưu"
+        cancelText="Hủy"
+      >
+        <Form
+          name="basic"
+          layout="vertical"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item
+            label="Tên gói vé"
+            name="username"
+            rules={[{ required: true, message: 'Vui lòng nhập tên gói vé' }]}
+          >
+            <Input placeholder="Nhập tên gói vé" />
+          </Form.Item>
+          <Space size={40}>
+            <Form.Item label="Ngày áp dụng" name="applyDate">
+              <Space size="middle">
+                <DatePicker placeholder="dd/mm/yy" />
+                <TimePicker placeholder="hh:mm:ss" />
+              </Space>
+            </Form.Item>
+            <Form.Item label="Ngày hết hạn" name="expirationDate">
+              <Space size="middle">
+                <DatePicker placeholder="dd/mm/yy" />
+                <TimePicker placeholder="hh:mm:ss" />
+              </Space>
+            </Form.Item>
+          </Space>
+          <Form.Item label="Giá vé áp dụng" name="price">
+            <Space size="middle" direction="vertical">
+              <Checkbox>
+                <Space direction="horizontal">
+                  <span className="no-wrap">Vé lẻ (vnđ/vé) với giá</span>
+                  <Input className="input-bg-gray " placeholder="Giá vé" />
+                  <span>/ vé</span>
+                </Space>
+              </Checkbox>
+              <Checkbox>
+                <Space direction="horizontal">
+                  <span className="no-wrap">Combo vé với giá</span>
+                  <Input className="input-bg-gray" placeholder="Giá vé" />
+                  <span>/</span>
+                  <Input className="input-bg-gray min-width" placeholder="Số vé" />
+                  <span>vé</span>
+                </Space>
+              </Checkbox>
+            </Space>
+          </Form.Item>
+          <Form.Item style={{ marginBottom: '0px' }} label="Tình trạng" name="status">
+            <Select
+              defaultValue="on"
+              style={{ width: 'fit-content' }}
+              onChange={(value: string) => {
+                console.log(value);
+              }}
+            >
+              <Option value="on">Đang áp dụng</Option>
+              <Option value="off">Tắt</Option>
+            </Select>
+          </Form.Item>
+          <div>
+            <span style={{ color: 'red' }}>*</span>{' '}
+            <span className="text-style-vlight-italic" style={{ opacity: 0.4 }}>
+              là thông tin bắt buộc
+            </span>
+          </div>
+        </Form>
+      </Modal>
     </ContentContainer>
   );
 };

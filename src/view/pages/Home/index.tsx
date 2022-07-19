@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { DatePicker } from 'antd';
 import moment from 'moment';
-import { TinyArea } from '@ant-design/plots';
+import { Area } from '@ant-design/plots';
 import { Pie } from '@ant-design/plots';
+import { demoData } from '@data/dummyData';
 import ContentContainer from '@components/ContentContainer';
 import './styles.scss';
 
 const dateFormat = 'MM/YYYY';
 
-const DemoTinyArea = () => {
-  const data = [
-    264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513, 546, 983, 340, 539,
-    243, 226, 192,
-  ];
-  const config = {
-    height: 200,
-    autoFit: false,
-    data,
-    smooth: true,
-    theme: 'default', // 'dark',
-  };
-  return <TinyArea {...config} />;
-};
+// const DemoTinyArea = () => {
+//   const data = [
+//     264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513, 546, 983, 340, 539,
+//     243, 226, 192,
+//   ];
+//   const config = {
+//     height: 200,
+//     autoFit: false,
+//     data,
+//     smooth: true,
+//     theme: 'default', // 'dark',
+//   };
+//   return <TinyArea {...config} />;
+// };
 
 const data1 = [
   {
@@ -95,6 +96,32 @@ const PieChart = ({
   return <Pie {...config} />;
 };
 
+const AreaChart = () => {
+  const config = {
+    data: demoData,
+    height: 220,
+    xField: 'Date',
+    yField: 'revenue',
+    smooth: true,
+    startOnZero: false,
+    line: {
+      color: '#FF8A48',
+      size: 3,
+    },
+    yAxix: { tickCount: 3, min: 100, minLimit: 100 },
+    xAxis: {
+      range: [0, 1],
+      tickCount: 5,
+    },
+    areaStyle: () => {
+      return {
+        fill: 'l(270) 0:#ffffff 1:#FF8A48',
+      };
+    },
+  };
+  return <Area {...config} />;
+};
+
 const Home = () => {
   return (
     <ContentContainer mainClass="homePage" title="Thống kê">
@@ -103,8 +130,12 @@ const Home = () => {
         <DatePicker defaultValue={moment('04/2021', dateFormat)} format={dateFormat} />
       </div>
       <div className="content__chart-line">
-        <DemoTinyArea />
+        {
+          /* <DemoTinyArea /> */
+          <AreaChart />
+        }
       </div>
+
       <div className="content__chart-pie">
         <div className="chart-pie-title">
           <span className="chart-pie__revenue text-style-light-thi">Tổng doanh thu theo tuẩn</span>

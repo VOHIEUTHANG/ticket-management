@@ -7,6 +7,13 @@
   .content__subtitle {
     color: $color-text-dark;
   }
+  .content__features {
+    padding-right: 40px;
+  }
+
+  .content__chart-line {
+    padding-right: 30px;
+  }
 
   .content__chart-pie {
     flex: 1;

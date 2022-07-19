@@ -47,6 +47,13 @@ body {
   font-size: 16px;
   line-height: 20px;
 }
+.text-style-vlight-italic {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+
 .text-style-light-thin {
   font-weight: 500;
   font-size: 14px;
@@ -68,6 +75,10 @@ body {
 }
 .hide {
   visibility: hidden;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 .ant-spin-container {
@@ -184,4 +195,102 @@ body {
   span + span {
     margin-left: 10px;
   }
+}
+
+.ant-form-item-required::before {
+  content: '' !important;
+}
+
+// Custom modal styels
+
+.ant-modal-content {
+  border-radius: 12px;
+  color: $color-text-dark;
+  overflow: hidden;
+  padding: 32px;
+  .ant-modal-header {
+    padding: 0;
+    border-bottom: none;
+  }
+  .ant-modal-body {
+    padding: 27px 0;
+    form {
+      .ant-form-item-label {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 26px;
+      }
+      .ant-input {
+        height: 40px;
+        border-radius: 8px;
+        border-color: $color-gray;
+      }
+    }
+  }
+  .ant-modal-footer {
+    border-top: none;
+    text-align: center;
+    .ant-btn.ant-btn-primary {
+      margin-left: 24px;
+      background-color: $color-text-yellow;
+      color: $color-white;
+      &:hover {
+        background-color: $color-white;
+        color: $color-text-yellow;
+      }
+    }
+  }
+
+  .ant-modal-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+  }
+  .ant-modal-close-x {
+    display: none;
+  }
+}
+
+.ant-picker-time-panel {
+  display: block;
+}
+
+.ant-picker .ant-picker-suffix {
+  color: $color-text-yellow;
+}
+.ant-picker-input > input:placeholder-shown {
+  width: fit-content;
+}
+
+.ant-input {
+  &.input-bg-gray {
+    background-color: $color-background-light-blue;
+    border: none;
+  }
+  &.min-width {
+    width: 90px;
+  }
+}
+
+.ant-select {
+  & > .ant-select-selector {
+    border: 1px solid #a5a8b1;
+    height: auto !important;
+    border-radius: 8px !important;
+    padding: 4px 10px !important;
+  }
+  .ant-select-suffix {
+    color: $color-text-yellow;
+  }
+}
+.ant-select-item {
+  min-height: unset !important;
+}
+.ant-select-item-option-content {
+  font-weight: normal !important;
+  background-color: rgab(0, 0, 0, 0.2);
+}
+.ant-select-item-option-content {
+  font-size: 1.6rem !important;
 }

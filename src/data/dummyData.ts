@@ -185,3 +185,26 @@ export const ticketPackageData: TTicketPackage[] = [
     status: 'Tắt',
   },
 ];
+
+export const demoData = [
+  {
+    Date: '29/03 - 04/04',
+    revenue: 150,
+  },
+  {
+    Date: '05/04 - 11/04',
+    revenue: 130,
+  },
+  {
+    Date: '12/01 - 18/04',
+    revenue: 240,
+  },
+  {
+    Date: '19/04 - 25/04',
+    revenue: 200,
+  },
+  {
+    Date: '26/04 - 02/05',
+    revenue: 190,
+  },
+];
