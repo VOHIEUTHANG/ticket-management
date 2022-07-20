@@ -171,7 +171,7 @@ export const ticketPackageData: TTicketPackage[] = [
   {
     key: '2',
     numericalOrder: 2,
-    packageID: 'ALT20210501',
+    packageID: 'ALT20210502',
     packageName: 'Gói sự kiện',
     dateOfUse: {
       date: '14/04/2021',
